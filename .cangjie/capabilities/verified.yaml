@@ -1,0 +1,483 @@
+schema_version: 1
+bundle_id: bundle.reflections-on-the-psalms
+book:
+  title: 《诗篇撷思》(Reflections on the Psalms)
+  author: C.S. Lewis（路益师，曾珍珍译，雅歌出版社 1991 初版）
+  source_pack: books/reflections-on-the-psalms
+  baseline_tag: baseline-psalms-9skill-20261024
+entry:
+  name: reflections-on-the-psalms
+  description: '当用户在以下领域寻求帮助时调用: 读诗篇/旧约时遇到抵触或困惑（咒诅诗篇的仇恨、赞美的谄媚感、自义的矛盾）、
+    审判/公正的视角转换、义愤与恶毒的情绪边界、途径（仪式/律法/方法论）是否喧宾夺主、第二层含义是否合法（巧合/同源/附会）、
+    被赋予权威文本的阅读姿态、自然观的神学定位。不适用于: 非宗教纯文学分析、急性心理危机（先求助专业人士）、
+    具体教义/神学论争的裁判。Triggers: 诗篇/Psalms/咒诅/审判/赞美/途径喧宾夺主/第二层含义/被提昇/创造论/义愤 vs 恶毒'
+  core_principles:
+  - 诗篇必须当作诗歌读——对仗是翻译后仍不失的格律，不可当教义论文或预言清单逐字提取命题。
+  - '面对令人反感的文本时三步走——不回避（承认情绪真实）、不背书（记载≠称许）、理解因果（恨从伤害来）。'
+  - 视角转换比换立场更有效——审判有刑事（被告求赦免）和民事（原告求伸冤）两个互补视角。
+  - 途径喧宾夺主是最大祸害——仪式/律法/方法论从手段滑向目的时，祝福变为祸害（Charles Williams）。
+  - 赞美不是义务性谄媚，而是欣赏臻入高潮时的自然流露——不赞美的欣赏是不完全的。
+  - 第二义须与原义背后的事物真相一体同源——巧合不可引申，同源可引申，附会当拒绝。
+  out_of_scope:
+  - 非宗教纯文学分析（用文学批评方法即可，不需"提昇"框架）
+  - 急性心理危机或暴力环境中的安全建议（请寻求专业帮助）
+  - 具体教义/神学论争的裁判（本 skill 提供方法论工具，不充当神学裁判所）
+  - 对非信徒强制适用信仰前设（"提昇""创造论"等概念依赖信仰前提）
+  stop_conditions:
+  - 用户在真正的暴力/虐待环境中 → 停止套用方法论，建议专业求助或报警。
+  - 文本不含令人反感内容且不涉及第二义/体裁判定 → 不需调用相关能力，直接回答即可。
+  - 纯事实查询（书名/作者/出版年/章节）→ 用 overview 回答后即停，不展开方法论。
+  - 用户根本不认同"有值得终极赞美的对象"或"创造者"概念 → 承认信仰前设限制，不强行推广框架。
+router_entry:
+  name: reflections-on-the-psalms
+  description: '当用户询问《诗篇撷思》(Reflections on the Psalms) 这本书本身（书名/作者/章节/整书概览/术语），
+    或涉及本书未独立成 Skill 的主题时调用: 诗篇中的死亡/Sheol 观、同流合污的避难所、麦基洗德预表、
+    焦点凝聚法/连战结构等文学技巧、附录 Robert Alter 诗篇文学分析。以下意图优先使用同包独立 Skill:
+    genre-adapted-reading（怎么读诗歌体裁）、imprecation-three-step（面对咒诅/反感文本）、
+    praise-essence-reframe（赞美/敬拜的抵触感）、means-displacing-ends（途径喧宾夺主检测）。
+    Triggers: 诗篇撷思/Reflections on the Psalms/路益师/C.S. Lewis/Sheol/麦基洗德/焦点凝聚法'
+promotion_budget: 9
+capabilities:
+- capability_id: cap.psalms.genre-adapted-reading
+  revision: 1
+  status: active
+  aliases: []
+  supersedes: []
+  merged_into: null
+  split_into: []
+  slug: genre-adapted-reading
+  title: 体裁适配阅读法
+  importance: critical
+  importance_rationale: task-01 的直接来源；误解体裁是读错诗篇的首要原因，影响所有后续章节的理解——全书方法论前提。
+  one_liner: 先判定文本体裁，再按体裁规则读——诗歌靠意象累积不靠逐字命题。
+  intents:
+  - 读诗篇/诗歌体经文时感到矛盾或困惑
+  - 想从诗篇中逐节提取教义要点
+  - 理解希伯来诗歌的对仗格律
+  keywords:
+  - 诗歌读法
+  - 对仗
+  - parallelism
+  - 体裁判定
+  - 教义清单
+  - 前后矛盾
+  also_read:
+  - imprecation-three-step
+  - elevated-literature-reading
+  - second-meaning-discernment
+  card: cards/genre-adapted-reading.md
+  frontmatter:
+    description: '当用户读诗篇/诗歌体经文时感到矛盾或困惑、想逐节提取教义要点、或讨论对仗格律时调用。
+      核心理念: 先判定体裁再按规则读——诗歌靠意象累积与回响不靠逐字命题化。不适用于: 非诗歌体裁文本、纯字面含义查询。
+      Triggers: 诗篇前后矛盾/逐节提取教义/对仗parallelism/how to read Psalms as poetry'
+    tags:
+    - reading-method
+    - genre-adaptation
+    - parallelism
+    - poetry
+  source_evidence:
+  - source_id: src-main-book
+    location: 第 1 章 导论
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五条全过——体裁判定是独立于书语境的通用阅读方法；契约清晰（输入文本，输出体裁判定+阅读策略）；可单独运行；适用一切诗歌文本；可用具体诗篇测试。
+- capability_id: cap.psalms.judgment-perspective-shift
+  revision: 1
+  status: active
+  aliases: []
+  supersedes: []
+  merged_into: null
+  split_into: []
+  slug: judgment-perspective-shift
+  title: 审判视角转换
+  importance: medium
+  importance_rationale: task-02 的直接来源；视角转换是通用思维方法，但应用场景较窄（主要涉及审判/公正主题文本）。
+  one_liner: 读审判文本时切换民事原告视角与刑事被告视角——合并双视角才看到完整图景。
+  intents:
+  - 读审判诗篇时对诗人自称无辜感到困惑
+  - 反思遭遇不公时如何以信仰立场表达
+  - 讨论"审判"时只想到惩罚看不到伸冤
+  keywords:
+  - 审判
+  - 民事
+  - 刑事
+  - 原告
+  - 被告
+  - judgment
+  - perspective-shift
+  also_read:
+  - imprecation-three-step
+  - indignation-malice-spectrum
+  card: cards/judgment-perspective-shift.md
+  frontmatter:
+    description: '当用户读审判诗篇时对诗人自称无辜感到困惑、反思遭遇不公时不知如何表达、或讨论审判只想到惩罚时调用。
+      核心理念: 审判有刑事（被告求赦免）和民事（原告求伸冤）两个互补视角，切换视角看到被遗漏的维度。不适用于: 非审判主题文本、法律纠纷咨询。
+      Triggers: 诗篇作者自称无罪/审判就是惩罚/judgment as lawsuit/civil vs criminal'
+    tags:
+    - perspective-shift
+    - judgment
+    - self-examination
+  source_evidence:
+  - source_id: src-main-book
+    location: 第 2 章 诗篇中的「审判」
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五条全过——视角转换是独立意图；契约清晰（输入审判文本，输出双视角分析）；可单独运行；适用一切公正/审判主题；可用审判诗篇测试。
+- capability_id: cap.psalms.imprecation-three-step
+  revision: 1
+  status: active
+  aliases: []
+  supersedes: []
+  merged_into: null
+  split_into: []
+  slug: imprecation-three-step
+  title: 咒诅诗篇三步接纳法
+  importance: high
+  importance_rationale: task-03 的直接来源；咒诅诗篇是初读者最大抵触源，回避或辩护两种错误都常见，遗漏后果严重。
+  one_liner: '面对令人反感的文本——不回避（承认恨是真的）→不背书（记载≠称许）→理解因果（恨从伤害来）。'
+  intents:
+  - 读到圣经中咒诅/仇恨/暴力内容时感到抵触
+  - 不知道这段经文是字面还是比喻
+  - 面对令人反感的经典文本时如何诚实面对同时保持道德判断
+  keywords:
+  - 咒诅诗篇
+  - imprecatory psalms
+  - 仇恨
+  - 记载 vs 称许
+  - 描述 vs 规定
+  - 强解掩饰
+  also_read:
+  - genre-adapted-reading
+  - indignation-malice-spectrum
+  - judgment-perspective-shift
+  card: cards/imprecation-three-step.md
+  frontmatter:
+    description: '当用户读到圣经中咒诅/仇恨/暴力内容（如诗篇137篇）感到抵触或困惑、或讨论"圣经记载是否等于神称许"时调用。
+      核心理念: 三步走——不回避（恨是真的）、不背书（记载≠称许）、理解因果（恨从伤害来）。不适用于: 真实暴力环境中的安全建议、为暴力寻找经文依据。
+      Triggers: 诗篇137太可怕/圣经怎么有咒诅/记载等于称许吗/imprecatory psalms'
+    tags:
+    - text-processing
+    - emotional-honesty
+    - boundary
+    - scripture
+  source_evidence:
+  - source_id: src-main-book
+    location: 第 3 章 咒诅
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五条全过——面对反感文本是独立意图；契约清晰（输入反感文本，输出三步分析）；可单独运行；适用一切令人反感的文本；可用咒诅诗篇测试。
+- capability_id: cap.psalms.praise-essence-reframe
+  revision: 1
+  status: active
+  aliases: []
+  supersedes: []
+  merged_into: null
+  split_into: []
+  slug: praise-essence-reframe
+  title: 赞美的本质理解框架
+  importance: high
+  importance_rationale: task-06 的直接来源；赞美是初读者第二大抵触源（"神像虚荣的独裁者"），影响敬拜体验，遗漏则抵触无法消解。
+  one_liner: 赞美不是义务性谄媚，而是欣赏臻入高潮时的自然流露——不赞美的欣赏是不完全的。
+  intents:
+  - 对赞美神/敬拜感到抵触或困惑
+  - 赞美像谄媚，无法发自内心参与
+  - 想理解赞美的心理本质
+  keywords:
+  - 赞美
+  - 敬拜
+  - 谄媚
+  - 欣赏
+  - praise
+  - worship
+  - flattery
+  also_read:
+  - means-displacing-ends
+  - creation-nature-view
+  card: cards/praise-essence-reframe.md
+  frontmatter:
+    description: '当用户对赞美神/敬拜感到抵触（"神为什么需要赞美""赞美像谄媚"）、或想理解赞美的心理本质时调用。
+      核心理念: 赞美是欣赏臻入高潮时的自然流露，不是义务；赞美者自己是最大受益者。不适用于: 创伤性赞美经历需专业辅导、非宗教语境的日常赞美。
+      Triggers: 神为什么需要赞美/赞美像谄媚/why does God need praise/praise as flattery'
+    tags:
+    - praise
+    - reframe
+    - psychology
+    - worship
+  source_evidence:
+  - source_id: src-main-book
+    location: 第 9 章 浅谈赞美
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五条全过——对赞美的抵触是独立意图；契约清晰（输入抵触感描述，输出重新框定+消解路径）；可单独运行；重新框定日常体验；可用抵触场景测试。
+- capability_id: cap.psalms.second-meaning-discernment
+  revision: 1
+  status: active
+  aliases: []
+  supersedes: []
+  merged_into: null
+  split_into: []
+  slug: second-meaning-discernment
+  title: 第二层含义三类辨识法
+  importance: high
+  importance_rationale: task-07 的直接来源；寓意解经最易被滥用，Lewis 的三类区分提供了可操作的判别工具，遗漏则无法防范附会。
+  one_liner: '判定第二义——考察原义→考察新义→问背后是否有共同事物真相——同源可引申，巧合和附会不可。'
+  intents:
+  - 判定一段文本的"第二层含义"是否合理
+  - 分辨"这段经文指向后来发生的事"是巧合还是同源
+  - 检验寓意解经（allegorical interpretation）是否合法
+  keywords:
+  - 第二层含义
+  - second meaning
+  - 巧合
+  - 同源共振
+  - 附会
+  - 寓意解经
+  - allegory
+  also_read:
+  - elevated-literature-reading
+  - genre-adapted-reading
+  card: cards/second-meaning-discernment.md
+  frontmatter:
+    description: '当用户想判断一段文本的"第二层含义"是否合理、分辨巧合/同源/附会、或检验寓意解经合法性时调用。
+      核心理念: 第二义分三类——巧合（不可引申）、同源共振（可引申）、附会（当拒绝），判定关键是否一体同源。不适用于: 无第二义争议的文本、纯字面含义查询。
+      Triggers: 这段经文指向后来发生的事/第二层含义/巧合还是预言/寓意解经对不对/second meaning/allegorical interpretation'
+    tags:
+    - hermeneutics
+    - second-meaning
+    - discernment
+    - critical-thinking
+  source_evidence:
+  - source_id: src-main-book
+    location: 第 10 章 第二层含义
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五条全过——第二义判别是独立意图；契约清晰（输入被赋予第二义的文本，输出分类判定+依据）；可单独运行；适用一切权威文本；可用具体案例测试。
+- capability_id: cap.psalms.elevated-literature-reading
+  revision: 1
+  status: active
+  aliases: []
+  supersedes: []
+  merged_into: null
+  split_into: []
+  slug: elevated-literature-reading
+  title: 被提昇文学的阅读法
+  importance: medium
+  importance_rationale: task-08 的直接来源；影响整本旧约的阅读方式，Lewis 的"提昇"概念是其圣经论核心，但依赖信仰前设，对非信徒缺乏说服力。
+  one_liner: 被提昇的文本仍是文学——不查百科，全人沉浸；旧性仍存留，不完美处也是信息的一部分。
+  intents:
+  - 读旧约时困惑这段经文不像神的话
+  - 试图从圣经逐条提取教义但某些段落无法归入
+  - 字面读法 vs 灵意读法的争论中需要第三条路
+  keywords:
+  - 被提昇
+  - elevation
+  - 旧约
+  - 百科全书
+  - 全人沉浸
+  - 旧性仍存留
+  - scripture as literature
+  also_read:
+  - genre-adapted-reading
+  - second-meaning-discernment
+  - means-displacing-ends
+  card: cards/elevated-literature-reading.md
+  frontmatter:
+    description: '当用户读旧约时困惑"这段不像神的话"、试图逐条提取教义但某些段落无法归入、或需要字面vs灵意之外的第三条路时调用。
+      核心理念: 旧约是被提昇的文学——不查百科，全人沉浸；旧性仍存留，不完美处本身也是信息。不适用于: 非宗教纯文学分析、非信徒读者（依赖信仰前设）。
+      Triggers: 圣经怎么有人的缺点/旧约不像神的话/字面还是灵意/elevated text/scripture as literature'
+    tags:
+    - scripture-reading
+    - elevation
+    - hermeneutics
+  source_evidence:
+  - source_id: src-main-book
+    location: 第 11 章 圣经
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五条全过——被提昇文本的阅读姿态是独立意图；契约清晰（输入被提昇文本，输出阅读姿态框架）；可单独运行；适用一切权威文本；可用旧约段落测试。
+- capability_id: cap.psalms.creation-nature-view
+  revision: 1
+  status: active
+  aliases: []
+  supersedes: []
+  merged_into: null
+  split_into: []
+  slug: creation-nature-view
+  title: 创造论视角下的自然观
+  importance: medium
+  importance_rationale: task-09 的直接来源；可推广至生态意识/审美教育等非宗教场景，但应用场景较窄，且依赖一神论信仰前提。
+  one_liner: 去神性反而充神性——自然不是神本身，而是创造者的指标和象征；平等观照万物是最全面的赞美。
+  intents:
+  - 在自然中体验美/敬畏时想理解这种感受的来源
+  - 区分泛神论/机械论/创造论的自然观
+  - 讨论生态/环保时需要区分神化自然和珍视自然
+  keywords:
+  - 创造论
+  - 自然观
+  - 泛神论
+  - 机械论
+  - 去神性
+  - 平等观照
+  - creation theology
+  - pantheism
+  also_read:
+  - praise-essence-reframe
+  - means-displacing-ends
+  card: cards/creation-nature-view.md
+  frontmatter:
+    description: '当用户在自然中体验美/敬畏时想理解来源、需区分泛神论/机械论/创造论自然观、或讨论生态与信仰关系时调用。
+      核心理念: 去神性→充神性——自然不是神本身而是创造者的指标，平等观照万物。不适用于: 非宗教生态讨论、不认同创造者概念的非信徒。
+      Triggers: 自然有神性吗/万物有灵/创造论和泛神论区别/creation theology vs pantheism'
+    tags:
+    - nature
+    - creation-theology
+    - aesthetics
+  source_evidence:
+  - source_id: src-main-book
+    location: 第 8 章 大自然
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五条全过——自然观定位是独立意图；契约清晰（输入自然体验/文本，输出自然观方法论）；可单独运行；去神性→充神性可推广；可用自然诗篇测试。
+- capability_id: cap.psalms.indignation-malice-spectrum
+  revision: 1
+  status: active
+  aliases: []
+  supersedes: []
+  merged_into: null
+  split_into: []
+  slug: indignation-malice-spectrum
+  title: 义愤与恶毒的情绪光谱定位
+  importance: high
+  importance_rationale: task-04 的直接来源；义愤与恶毒的边界模糊，实际判断中常混淆，"全是高处便是险恶"是全书核心警示之一。
+  one_liner: 检查你的愤怒指向行为纠正还是人格毁灭——指向毁灭则义愤已变质为恶毒。
+  intents:
+  - 因遭遇不义而愤怒但不确定是否过线
+  - 分辨义愤与恶毒的边界
+  - 在公共讨论中识别"以正义之名行网暴之实"
+  - 理解为什么恨停不下来
+  keywords:
+  - 义愤
+  - 恶毒
+  - 情绪光谱
+  - 全是高处便是险恶
+  - righteous indignation
+  - malice
+  - 赦免
+  also_read:
+  - imprecation-three-step
+  - judgment-perspective-shift
+  card: cards/indignation-malice-spectrum.md
+  frontmatter:
+    description: '当用户因遭遇不义而愤怒但不确定是否过线、想分辨义愤与恶毒边界、或感到恨停不下来时调用。
+      核心理念: 义愤指向行为纠正，恶毒指向人格毁灭；越是高处越险恶，赦免需一再重复。不适用于: 真实暴力环境的安全建议、为恶意寻找正当性。
+      Triggers: 我的愤怒是义愤还是恶意/义愤会不会变成恶意/怎么判断愤怒是否过线/righteous anger going too far'
+    tags:
+    - emotion
+    - righteous-indignation
+    - boundary
+    - self-examination
+  source_evidence:
+  - source_id: src-main-book
+    location: 第 3 章 咒诅
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五条全过——情绪边界判定是独立意图；契约清晰（输入愤怒情境，输出光谱定位+边界判断）；可单独运行；通用情绪判断工具；可用具体情境测试。
+- capability_id: cap.psalms.means-displacing-ends
+  revision: 1
+  status: active
+  aliases: []
+  supersedes: []
+  merged_into: null
+  split_into: []
+  slug: means-displacing-ends
+  title: 途径喧宾夺主警戒原则
+  importance: critical
+  importance_rationale: task-05 的直接来源；全书最具普适性的原则（Charles Williams 原话），宗教内外、工作生活皆可适用，遗漏后果是工具异化无法被检测。
+  one_liner: '问"这个东西现在是我的途径还是目的"——答不上来则途径已喧宾夺主。'
+  intents:
+  - 检测仪式/流程/律法/方法论是否从手段滑向目的
+  - 感到"仪式空了"或"流程变味了"
+  - 讨论工具异化/制度变味
+  - 在工作/教育/信仰中检测途径是否取代目的
+  keywords:
+  - 途径喧宾夺主
+  - 手段变目的
+  - 工具异化
+  - 仪式
+  - 律法主义
+  - means becoming ends
+  - instrumentalization
+  also_read:
+  - praise-essence-reframe
+  - elevated-literature-reading
+  - creation-nature-view
+  card: cards/means-displacing-ends.md
+  frontmatter:
+    description: '当用户感到"仪式/流程/律法/方法变成了目的"、检测工具是否异化、或讨论"按规定办vs把事做好"时调用。
+      核心理念: 途径喧宾夺主时祝福变祸害——检测信号：执着途径超过渴望目的、执行完美但内心空洞、变更引发焦虑。不适用于: 无途径-目的张力的场景、反制度/反方法立场。
+      Triggers: 仪式空了/流程变味了/手段变成了目的/按规定办vs把事做好/means becoming ends/instrumentalization'
+    tags:
+    - means-vs-ends
+    - corruption
+    - universal
+    - detection
+  source_evidence:
+  - source_id: src-main-book
+    location: 第 5、6 章
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五条全过——途径异化检测是独立意图；契约清晰（输入途径，输出喧宾夺主判定+信号清单+修复建议）；可单独运行；全书最具普适性；可用仪式/律法/方法论场景测试。

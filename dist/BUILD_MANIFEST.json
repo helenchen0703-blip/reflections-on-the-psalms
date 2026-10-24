@@ -1,0 +1,39 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "SKILL.md": "fc7833c8faf20513657bde02d23b1e74de27a8ae3ebcd5dfd4204a453de77691",
+    "references/capabilities/creation-nature-view.md": "2798a768dbb48ba0b2723a0bfc9d1093fe165bcbe0f793a2b1d3b272e2c0d2ff",
+    "references/capabilities/elevated-literature-reading.md": "9fb8880b9c2bba6684c765ce0f45d99bb91ed36ef6a316fa277fe7fbdc26cffe",
+    "references/capabilities/genre-adapted-reading.md": "673825b941fc015825fd8f02d956556b68802a27d9fa4ce2901e2f1af428aaa9",
+    "references/capabilities/imprecation-three-step.md": "33007426dc978caf70becb78bf44f83eb7eef7e72c8653c17b9721e34dad873b",
+    "references/capabilities/indignation-malice-spectrum.md": "97023885de09658010e1392950e314312f6021c5f6c1565c651a27d9b7976143",
+    "references/capabilities/judgment-perspective-shift.md": "1a538a0a98ab8145e28d9d666d728ef115d088a66ff3239ef53b2f25f88bd3cb",
+    "references/capabilities/means-displacing-ends.md": "4240722cde788528c6d52dd8d2e621e83a1d8416bd77e99e80e6de1d152d3d44",
+    "references/capabilities/praise-essence-reframe.md": "6cca6b1f30e102a45558d0e3afb1ddc89203fc63647c2592e35dd61fbcedcef3",
+    "references/capabilities/second-meaning-discernment.md": "1d1a09d089d6612a85bd50c9e17a2e868aa9e11797d05de2e8a65bf3645e4cae",
+    "references/capability-index.md": "da2a09f4ed1295cd4b37d3a2f5a88406f9a8da0071ce9401cf78e49ead3612a9",
+    "references/cheatsheet.md": "0ff340e953813921007ad9a60f4707fe7d9a820b8160a0165c956da1aa462540",
+    "references/glossary.md": "68ce4893374d395d8ae6f9f2e2f8c431af02ee2e390753ff6739b4e316e93a4b",
+    "references/overview.md": "e6ef4f6d9b3ab9a19a70c19f3ba1550031919587d85442972928934bfaad0c6e"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "bundle.reflections-on-the-psalms",
+  "bundle_sha256": "3514e8b0a379e2bb38ec245d0bf0a8f1d325b86c293353753b4e3cb3c20d67f7",
+  "variant": "single",
+  "run_id": "run-20261024-093718-ecf3c7",
+  "decision": {
+    "schema_version": 1,
+    "requested": "auto",
+    "selected": "single",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 9,
+    "promoted_count": 9,
+    "capability_count": 9,
+    "reasons": [
+      "9 个能力通过晋级门，但触发验证阈值为 TBD-after-baseline 尚未启用；按 single-first 原则先推荐 single，拆分由使用证据驱动"
+    ],
+    "alternative": "compact pack（1 个来源路由入口 + 9 个晋级 Skill，共 10 个可发现入口）",
+    "user_confirmed": false,
+    "preserve_strategy_on_update": true
+  }
+}

@@ -13,25 +13,31 @@
 ## 当前进度
 
 - [x] 阶段 0: 整书理解 — [BOOK_OVERVIEW.md](./BOOK_OVERVIEW.md)
-- [ ] 阶段 1: 五 extractor 并行提取
-- [ ] 阶段 1.5: 三重验证
-- [ ] 阶段 1.6: 独立 Skill 晋级门
-- [ ] 阶段 2: RIA++ 能力卡
-- [ ] 阶段 3: Zettelkasten 链接
-- [ ] 阶段 4: 压力测试
-- [ ] 阶段 5: 编译交付
+- [x] 阶段 1: 五 extractor 并行提取 — [candidates/](./candidates/)
+- [x] 阶段 1.5: 三重验证 — [verified.md](./.cangjie/capabilities/book/verified.md)
+- [x] 阶段 1.6: 独立 Skill 晋级门 — [promotion-gate.md](./.cangjie/capabilities/book/promotion-gate.md)
+- [x] 阶段 2: RIA++ 能力卡 — [cards/](./.cangjie/capabilities/cards/)
+- [x] 阶段 3: Zettelkasten 链接 — also_read 回填 + [GLOSSARY.md](./GLOSSARY.md)
+- [x] 阶段 4: 压力测试 — [test-prompts.json](./.cangjie/capabilities/test-prompts.json) + [test-results.md](./.cangjie/capabilities/test-results.md)
+- [x] 阶段 5: 编译交付 — [DIGEST.md](./DIGEST.md) + [dist/](./dist/) + 已安装到 `~/.workbuddy-ai/skills/`
 
 ## 目录结构
 
 ```
 books/reflections-on-the-psalms/
-├── BOOK_OVERVIEW.md          # 阶段 0 产出: Adler 四步 + 原书关键任务清单
-├── candidates/               # 阶段 1 产出: 五 extractor 候选
-├── rejected/                 # 阶段 1.5 产出: 被拒绝的候选
+├── BOOK_OVERVIEW.md          # 阶段 0: Adler 四步 + 原书关键任务清单
+├── DIGEST.md                 # 阶段 5: 面向读者的精华长文 (~6500 字)
+├── GLOSSARY.md               # 阶段 3: 术语词典 (10 条)
+├── README.md                 # 本文件
+├── candidates/               # 阶段 1: 五 extractor 候选 (frameworks/principles/cases/counter-examples/glossary)
+├── dist/                     # 阶段 5: 编译产物 (SKILL.md + references/)
 └── .cangjie/
     └── capabilities/
-        ├── cards/            # 阶段 2 产出: RIA++ 能力卡
-        └── book/             # 整书元数据
+        ├── verified.yaml     # 唯一编译事实源 (9 个 active 能力)
+        ├── cards/            # 阶段 2: 9 张 RIA++ 六段能力卡
+        ├── book/             # 整书元数据 (verified/coverage-audit/promotion-gate/glossary/overview)
+        ├── test-prompts.json # 阶段 4: 20 条测试用例
+        └── test-results.md   # 阶段 4: 测试结果 (95% 通过率)
 ```
 
 ## 识别的 9 个可 skill 化任务

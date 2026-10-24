@@ -1,0 +1,178 @@
+{
+  "skill": "reflections-on-the-psalms",
+  "version": "0.1.0",
+  "description": "Single-mode bundle with 9 promoted capabilities from C.S. Lewis's Reflections on the Psalms. Tests cover trigger precision per capability + cross-skill confusion + edge cases.",
+  "capabilities_in_bundle": [
+    "genre-adapted-reading",
+    "judgment-perspective-shift",
+    "imprecation-three-step",
+    "praise-essence-reframe",
+    "second-meaning-discernment",
+    "elevated-literature-reading",
+    "creation-nature-view",
+    "indignation-malice-spectrum",
+    "means-displacing-ends"
+  ],
+  "test_cases": [
+    {
+      "id": "st-genre-01",
+      "type": "should_trigger",
+      "target_capability": "genre-adapted-reading",
+      "prompt": "读诗篇第29篇时感觉前后矛盾，每节都说'耶和华的声音'但好像在重复，是不是有什么我没读对？",
+      "expected_behavior": "调用 genre-adapted-reading，判定为诗歌体裁，解释对仗结构是重复而非矛盾",
+      "notes": "正面场景: 诗歌读法困惑"
+    },
+    {
+      "id": "st-genre-02",
+      "type": "should_trigger",
+      "target_capability": "genre-adapted-reading",
+      "prompt": "how to read Psalms as poetry? I keep trying to extract doctrine from each verse but it doesn't work",
+      "expected_behavior": "调用 genre-adapted-reading，解释对仗格律和意象累积法",
+      "notes": "正面场景: 英文提问触发"
+    },
+    {
+      "id": "st-judgment-01",
+      "type": "should_trigger",
+      "target_capability": "judgment-perspective-shift",
+      "prompt": "诗篇第7篇里大卫说自己无罪，这不是自以为义吗？基督徒怎么能说自己无罪呢？",
+      "expected_behavior": "调用 judgment-perspective-shift，切换到民事原告视角解释",
+      "notes": "正面场景: 对自称无辜的困惑"
+    },
+    {
+      "id": "st-imprecation-01",
+      "type": "should_trigger",
+      "target_capability": "imprecation-three-step",
+      "prompt": "诗篇137篇说要把婴孩摔在磐石上，这种内容怎么可能在圣经里？我读不下去了",
+      "expected_behavior": "调用 imprecation-three-step，执行三步接纳法：不回避/不背书/理解因果",
+      "notes": "正面场景: 咒诅诗篇最大抵触源"
+    },
+    {
+      "id": "st-praise-01",
+      "type": "should_trigger",
+      "target_capability": "praise-essence-reframe",
+      "prompt": "我不想去教会了，每次唱赞美诗都觉得像在谄媚一个虚荣的神，为什么神需要我夸他？",
+      "expected_behavior": "调用 praise-essence-reframe，重新框定赞美为欣赏的自然流露",
+      "notes": "正面场景: 赞美抵触感"
+    },
+    {
+      "id": "st-second-01",
+      "type": "should_trigger",
+      "target_capability": "second-meaning-discernment",
+      "prompt": "有人说诗篇第22篇是预言基督受难，但大卫写的时候明明是在说自己受苦，这算预言还是附会？",
+      "expected_behavior": "调用 second-meaning-discernment，用三类辨识法判定",
+      "notes": "正面场景: 第二义合法性判定"
+    },
+    {
+      "id": "st-elevated-01",
+      "type": "should_trigger",
+      "target_capability": "elevated-literature-reading",
+      "prompt": "传道书说凡事虚空，但其他经文说人生有意义，圣经怎么会有这种矛盾？到底该信哪个？",
+      "expected_behavior": "调用 elevated-literature-reading，解释被提昇文学中旧性仍存留",
+      "notes": "正面场景: 圣经'矛盾'困惑"
+    },
+    {
+      "id": "st-creation-01",
+      "type": "should_trigger",
+      "target_capability": "creation-nature-view",
+      "prompt": "在大自然中散步时特别能感受到神，但这种感觉和泛神论的'万物有灵'有什么区别？",
+      "expected_behavior": "调用 creation-nature-view，区分泛神论和创造论的自然观",
+      "notes": "正面场景: 自然观区分"
+    },
+    {
+      "id": "st-indignation-01",
+      "type": "should_trigger",
+      "target_capability": "indignation-malice-spectrum",
+      "prompt": "看到社会不义新闻后我特别愤怒，越想越觉得这些人都是败类该死，我这是义愤还是已经变味了？",
+      "expected_behavior": "调用 indignation-malice-spectrum，在光谱上定位情绪",
+      "notes": "正面场景: 义愤变质检测"
+    },
+    {
+      "id": "st-means-01",
+      "type": "should_trigger",
+      "target_capability": "means-displacing-ends",
+      "prompt": "我们公司的审批流程越来越复杂，大家都在'按规定办'但事情反而做不好了，这流程是不是出问题了？",
+      "expected_behavior": "调用 means-displacing-ends，检测途径是否喧宾夺主",
+      "notes": "正面场景: 非宗教场景的途径异化"
+    },
+    {
+      "id": "st-means-02",
+      "type": "should_trigger",
+      "target_capability": "means-displacing-ends",
+      "prompt": "每天灵修变成了一种打卡，做完了就安心，不做就焦虑，但好像也没真的在亲近神",
+      "expected_behavior": "调用 means-displacing-ends，检测灵修是否从途径滑向目的",
+      "notes": "正面场景: 信仰场景的途径异化"
+    },
+    {
+      "id": "snt-info-01",
+      "type": "should_not_trigger",
+      "target_capability": null,
+      "prompt": "帮我查一下C.S. Lewis的《诗篇撷思》是哪年出版的",
+      "expected_behavior": "纯事实查询，不应调用任何能力卡，直接用overview回答",
+      "notes": "诱饵: 纯信息查询"
+    },
+    {
+      "id": "snt-info-02",
+      "type": "should_not_trigger",
+      "target_capability": null,
+      "prompt": "诗篇有多少篇？分为哪几卷？",
+      "expected_behavior": "纯事实查询，不应调用任何能力卡",
+      "notes": "诱饵: 圣经常识查询"
+    },
+    {
+      "id": "snt-crisis-01",
+      "type": "should_not_trigger",
+      "target_capability": null,
+      "prompt": "我正在遭受家暴，我该怎么办",
+      "expected_behavior": "安全危机，不应套用任何skill方法论，应建议专业求助",
+      "notes": "诱饵: 急性危机场景——stop_condition明确排除"
+    },
+    {
+      "id": "cross-01",
+      "type": "should_trigger_other",
+      "target_capability": "imprecation-three-step",
+      "prompt": "诗篇137篇的咒诅太可怕了，但我也理解诗人当时的心情，这种恨可以理解但能效法吗？",
+      "expected_behavior": "应触发 imprecation-three-step（三步接纳法），而非 indignation-malice-spectrum（自身情绪检查）。因为用户在读文本中的他人情绪，不是在检查自己的愤怒",
+      "notes": "跨能力混淆: 咒诅诗篇场景容易误触发 indignation-malice-spectrum"
+    },
+    {
+      "id": "cross-02",
+      "type": "should_trigger_other",
+      "target_capability": "indignation-malice-spectrum",
+      "prompt": "我被同事坑了之后越想越气，恨不得他身败名裂，我这种愤怒是不是已经过线了？",
+      "expected_behavior": "应触发 indignation-malice-spectrum（自身情绪道德检查），而非 imprecation-three-step（文本情绪接纳）。因为用户在检查自己的愤怒，不是在读文本",
+      "notes": "跨能力混淆: 愤怒场景容易误触发 imprecation-three-step"
+    },
+    {
+      "id": "cross-03",
+      "type": "should_trigger_other",
+      "target_capability": "genre-adapted-reading",
+      "prompt": "读诗篇时总觉得每节都在自相矛盾，一会儿说自己无辜一会儿又认罪",
+      "expected_behavior": "应触发 genre-adapted-reading（体裁误判导致读到矛盾），而非 judgment-perspective-shift（审判视角转换）。因为问题是读法不对不是视角不对",
+      "notes": "跨能力混淆: 读诗篇困惑容易误触发 judgment-perspective-shift"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "target_capability": "means-displacing-ends",
+      "prompt": "我觉得每天读经很重要，所以雷打不动每天读一章",
+      "expected_behavior": "边界: 读经本身不是问题，但如果'雷打不动'带来安全感而非与神相遇，可能触发 means-displacing-ends。判断关键：变更引发焦虑吗？执行完美但内心空洞吗？",
+      "notes": "边界: 日常信仰实践的灰色地带——途径与目的的模糊边界"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "target_capability": "second-meaning-discernment",
+      "prompt": "我觉得这段经文有更深的意思，但说不清楚是什么",
+      "expected_behavior": "边界: 如果说不出新义是什么，无法判定第二义类型。应先问用户新义具体指什么，再决定是否调用 second-meaning-discernment。信息不足时不应强行判定",
+      "notes": "边界: 信息不足时不应强行判定"
+    },
+    {
+      "id": "edge-03",
+      "type": "edge_case",
+      "target_capability": "praise-essence-reframe",
+      "prompt": "我对赞美的抵触是因为小时候被强迫给长辈说好话",
+      "expected_behavior": "边界: 触抵触源于创伤性经历而非认知误解——praise-essence-reframe 的B段明确排除此场景，应建议专业心理辅导而非认知重构",
+      "notes": "边界: 创伤性来源不应使用认知重构工具"
+    }
+  ]
+}
