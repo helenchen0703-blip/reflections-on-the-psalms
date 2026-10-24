@@ -2,6 +2,17 @@
 
 > C.S. Lewis《Reflections on the Psalms》(诗篇撷思) 的 cangjie-skill 蒸馏工作区
 
+## v1.0.0 成品（2026-10-24）
+
+| 内容 | 说明 |
+|---|---|
+| [⬇️ reflections-on-the-psalms-v1.0.0.zip](https://github.com/helenchen0703-blip/reflections-on-the-psalms/releases/download/v1.0.0/reflections-on-the-psalms-v1.0.0.zip) | 一键下载：完整Skill + 精华文章 + 说明 + 测试记录 |
+| [reflections-on-the-psalms/](./reflections-on-the-psalms/) | 可安装的完整Skill（`SKILL.md` + `references/`，十张能力卡） |
+| [诗篇撷思-安装与分享说明.md](./诗篇撷思-安装与分享说明.md) | 安装步骤、五个示范提问、十项能力 |
+| [诗篇撷思-精华.md](./诗篇撷思-精华.md) | 约五千字精华文章，可独立阅读 |
+
+安装时请保留整个 `reflections-on-the-psalms/` 文件夹。下方 `dist/` 及阶段记录属于早期版本（九张卡），保留作制作过程参考。
+
 ## 关于本书
 
 - **书名**: 诗篇撷思 (Reflections on the Psalms)

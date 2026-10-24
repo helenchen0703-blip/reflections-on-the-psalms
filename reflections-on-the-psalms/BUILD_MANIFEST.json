@@ -1,0 +1,40 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "SKILL.md": "66896e10bda0fc34f98532160b5fb8cdbcdb0cde9391af7d7ebd25b5401451d5",
+    "references/capabilities/fair-disagreement.md": "c4036ac2d5dfe8b7313bf7ee8eec81d1758efe73dbe15b6eb91d798207bec854",
+    "references/capabilities/imprecation-anger.md": "1a7e6311342494e66affa343e6856c528a0d638f5a450fa98442ff1fe5d9aa4c",
+    "references/capabilities/judgment-perspective.md": "1b3c7c34c2a17de7c2c9dffbadbb3df827ac9ad72aa7956b6a9522019f02ac8c",
+    "references/capabilities/law-delight.md": "794c777fb373f83a076b76978f32fac7c4285aa46c93ae01b2ffc2ca8614ca87",
+    "references/capabilities/layered-meaning.md": "6c98dbc9c9f398ffbb6bd46f65973439e124fe252bcf4de7dece758c60512241",
+    "references/capabilities/means-purpose.md": "9334bf4eff8f88cc91c2ec02c5f387a5c809302f7b74c53b5f28f29f9e80a063",
+    "references/capabilities/poetic-reading.md": "80638fb48cc1fd24b03072f97e79d3ba1501f62b67e16a703fc68a1d6d2ec2f6",
+    "references/capabilities/praise-enjoyment.md": "3bef840078ca20760715882fd62da8e344449570288c7e7b3632631e142980db",
+    "references/capabilities/social-integrity.md": "baebbe061147b408a9f0a0f7fca24d0923e45512efe0b9b22348e0cfd3c33a50",
+    "references/capabilities/specific-rights.md": "f35858d9b9402de81274452c8ebb04924e1629ef5635a047454f289dd9cf8fc4",
+    "references/capability-index.md": "be9b96c6b0e7d61e7ac58b55fc2535e773b513a1787ff26c85c2a460f42057c6",
+    "references/cheatsheet.md": "d6debe82c61629d23d3e8bc25e75ad8ca76ac9426c2ce4f5b7b02d367e770f36",
+    "references/glossary.md": "32c0732a65a833c13561236272a9864b814e6d91ca86c41511b04ad2260fb9bd",
+    "references/overview.md": "fb55d3d46db1205b5f92c68b6bd958834f9849440471831a9423e9f591439fa1"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "bundle.reflections-on-the-psalms",
+  "bundle_sha256": "6bec0afb02ed5a195559597a6f261d05029977bca945dab2eae4e1c0978349ba",
+  "variant": "single",
+  "run_id": "run-20261024-172947-ed39a6",
+  "decision": {
+    "schema_version": 1,
+    "requested": "single",
+    "selected": "single",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 8,
+    "promoted_count": 0,
+    "capability_count": 10,
+    "reasons": [
+      "用户显式选择 single，auto 决策器不覆盖用户选择"
+    ],
+    "alternative": "compact pack（1 个来源路由入口 + 0 个晋级 Skill，共 1 个可发现入口）",
+    "user_confirmed": true,
+    "preserve_strategy_on_update": true
+  }
+}
