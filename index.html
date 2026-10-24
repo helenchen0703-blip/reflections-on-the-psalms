@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>诗篇撷思 · 随手问</title>
+<meta name="description" content="依据 C. S. Lewis《诗篇撷思》整理的十个常见困惑。点一个，复制提问，粘贴到任何 AI 里即可。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f3ec;
+  --paper: #fffdf8;
+  --ink: #2b2620;
+  --muted: #6f665a;
+  --line: #e4dccd;
+  --accent: #8a4b2a;
+  --accent-soft: #f3e6dc;
+  --quote: #5b4a3a;
+  --ok: #2f6b45;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1916; --paper: #25211d; --ink: #ece5da; --muted: #a89d8e;
+    --line: #3a342d; --accent: #e0a07a; --accent-soft: #3a2b22; --quote: #d3c3ae; --ok: #7cc79a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1916; --paper: #25211d; --ink: #ece5da; --muted: #a89d8e;
+  --line: #3a342d; --accent: #e0a07a; --accent-soft: #3a2b22; --quote: #d3c3ae; --ok: #7cc79a;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Noto Serif SC", "Songti SC", "STSong", serif;
+  line-height: 1.75; font-size: 17px;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+header { padding: 56px 0 28px; }
+.eyebrow { color: var(--accent); font-size: 14px; letter-spacing: .12em; margin: 0 0 8px; }
+h1 { font-size: clamp(30px, 7vw, 44px); line-height: 1.25; margin: 0 0 14px; font-weight: 700; }
+.lede { color: var(--muted); margin: 0; }
+.steps { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0 0; padding: 0; list-style: none; }
+.steps li { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 4px 14px; font-size: 15px; }
+.steps b { color: var(--accent); margin-right: 4px; }
+
+h2 { font-size: 20px; margin: 36px 0 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.topic {
+  text-align: left; font: inherit; color: inherit; cursor: pointer;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px 16px; line-height: 1.5; transition: border-color .15s, transform .15s;
+}
+.topic:hover { border-color: var(--accent); transform: translateY(-1px); }
+.topic[aria-expanded="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.topic .q { display: block; font-weight: 600; font-size: 16px; }
+.topic .t { display: block; color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+.panel {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  padding: 22px 20px; margin: 16px 0 0; scroll-margin-top: 16px;
+}
+.panel[hidden] { display: none; }
+.panel h3 { margin: 0 0 4px; font-size: 22px; line-height: 1.4; }
+.panel .sub { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+blockquote {
+  margin: 0 0 18px; padding: 10px 16px; border-left: 3px solid var(--accent);
+  color: var(--quote); background: var(--accent-soft); border-radius: 0 8px 8px 0;
+}
+blockquote cite { display: block; font-size: 13px; color: var(--muted); font-style: normal; margin-top: 4px; }
+.panel h4 { font-size: 15px; color: var(--accent); margin: 18px 0 6px; letter-spacing: .05em; }
+.panel ul { margin: 0; padding-left: 1.2em; }
+.panel li { margin: 4px 0; }
+.example { font-size: 15px; color: var(--muted); }
+.example b { color: var(--ink); font-weight: 600; }
+
+.prompt-box { margin-top: 18px; }
+textarea {
+  width: 100%; min-height: 220px; resize: vertical; font: inherit; font-size: 15px; line-height: 1.6;
+  color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px;
+}
+textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+.btn {
+  font: inherit; font-size: 16px; cursor: pointer; border-radius: 10px; padding: 10px 20px;
+  background: var(--accent); color: var(--paper); border: 0; font-weight: 600;
+}
+.btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.hint { color: var(--muted); font-size: 14px; }
+.copied { color: var(--ok); font-size: 14px; }
+
+.free { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+.free p { margin: 0 0 10px; color: var(--muted); font-size: 15px; }
+.free textarea { min-height: 90px; }
+
+footer { margin: 48px 0 0; padding: 24px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+footer a { color: var(--accent); }
+footer p { margin: 6px 0; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0 0 14px; font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">C. S. LEWIS《诗篇撷思》</p>
+    <h1>读诗篇时卡住了？<br>从一个具体的问题开始。</h1>
+    <p class="lede">这里整理了书中十种读法与判断方法。不用读完原书，也不用安装任何东西。</p>
+    <ol class="steps">
+      <li><b>1</b>点一个困惑</li>
+      <li><b>2</b>把方括号换成你的情况</li>
+      <li><b>3</b>复制，粘贴到任何 AI</li>
+    </ol>
+  </header>
+
+  <main>
+    <h2>你在想哪一个？</h2>
+    <div class="grid" id="grid"></div>
+    <div id="panels"></div>
+
+    <h2>都不太像？直接写下你的问题</h2>
+    <div class="free">
+      <p>写下你的困惑，下面会自动拼成一段提问，复制给 AI 就好。</p>
+      <textarea id="freeInput" placeholder="例如：诗篇里“愿他的儿女为孤儿”这样的话，基督徒该怎么读？"></textarea>
+      <div class="row">
+        <button class="btn" id="freeCopy">复制提问</button>
+        <span class="copied" id="freeMsg" aria-live="polite"></span>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="links">
+      <a href="https://github.com/helenchen0703-blip/reflections-on-the-psalms/blob/main/%E8%AF%97%E7%AF%87%E6%92%B7%E6%80%9D-%E7%B2%BE%E5%8D%8E.md">读五千字精华文章 →</a>
+      <a href="https://github.com/helenchen0703-blip/reflections-on-the-psalms/tree/main/reflections-on-the-psalms">会用 Skill？安装完整版 →</a>
+    </div>
+    <p>依据 C. S. Lewis 著、曾珍珍译《诗篇撷思》（雅歌出版社，1991）整理。书中引句为短摘录；方法步骤与生活例子为编者整理，不是原书内容。</p>
+    <p>这不是心理诊断、法律裁判或希伯来文词义鉴定工具。AI 的回答可能出错，涉及具体经文时请对照你手边的译本。</p>
+  </footer>
+</div>
+
+<script>
+const RULES = "请区分：诗句原义、Lewis 的解释、对我的应用。不确定的地方直接说不确定，不要编造经文、出处或我没提供的事实。先给结论，再给依据和限制，不必写成长报告。";
+
+const TOPICS = [
+  {
+    id: "poetic", q: "诗句重复说一件事，是不是两条道理？", title: "按诗歌体裁读诗篇",
+    quote: "詩篇必須當作詩歌讀", where: "第6页",
+    points: ["先找出前后两句对应的词和意象，看它们共同在说什么。", "重复常常是在加强感受，不一定在交付新教义。", "第二句也可能推进或对照，别把一切都当同义。"],
+    example: "“我的心如旱地盼雨，我的灵像干土等水。”两句共同表达渴慕，不足以说明“心”和“灵”各得一种恩赐。",
+    prompt: "请按 C. S. Lewis《诗篇撷思》“诗篇必须当作诗歌读”的思路，帮我读下面这段诗：先找出前后呼应的词句，说出它们共同的意思和修辞作用，再说明哪些结论有文本支持、哪些没有。\n\n译本：[和合本 / 新译本 / 其他]\n诗句：[粘贴完整诗段]\n我困惑的地方：[写下来]"
+  },
+  {
+    id: "judgment", q: "为什么有的诗篇盼望审判，有的却害怕？", title: "解释审判的不同位置",
+    quote: "前者希望被判無罪，或被赦免；後者希望自己勝訴", where: "第14页",
+    points: ["先看说话的人站在哪里：等待伸冤的“原告”，还是怕被定罪的“被告”。", "受欺压的人盼公正介入，欢迎审判就说得通。", "同一个人也可能在别的事上为自己的过错求怜悯。"],
+    example: "“求你显明被侵吞的田地”——说话者在求公道被看见，不是在为自己辩护。",
+    prompt: "请按 C. S. Lewis《诗篇撷思》“原告与被告”的视角，解释下面这段诗里说话者对审判的态度：他在求什么？站在什么位置？这和他的情绪有什么关系？不要用宗教身份去推断某一群人的心理。\n\n译本：[填写]\n诗句：[粘贴诗段]\n我的疑问：[填写]"
+  },
+  {
+    id: "rights", q: "他平时人很好，这件事就一定是他对吗？", title: "把具体是非与人格评价分开",
+    quote: "勸人行善可以，但不應因此抹煞是非。", where: "第19页",
+    points: ["分三栏：这件事的事实、各自的品格、谁可以自愿让步。", "一个人整体不讨喜，也可能在这件事上有理。", "“大方一点”可以劝，但不能拿来改判东西归谁。"],
+    example: "甲脾气差，但借书记录证明书是他的；乙很乖却不还。书应归还，甲的脾气另谈。",
+    prompt: "请按 C. S. Lewis《诗篇撷思》“劝人行善，但不抹煞是非”的思路，帮我把下面这件事分成三栏：①具体事实与权益 ②各人的品格表现 ③谁可以自愿让步。事实不够时请说明还缺什么，不要替我下定论。\n\n发生了什么：[填写]\n已知的证据：[聊天记录 / 借条 / 其他]\n我不确定的地方：[填写]"
+  },
+  {
+    id: "fair", q: "吵完架，我想检查自己有没有不公平", title: "检查自己是否公平地争论",
+    quote: "我們便要自問有否公平地與人爭論？", where: "第17页",
+    points: ["只看自己做过、可以核对的事：转述完整吗？答应的做到了吗？", "感受可以被尊重，但不能抵销没做到的事。", "不去猜对方动机，最后定一个具体的补救动作。"],
+    example: "我把同事的话截掉前半句转给别人，还漏做了约好的整理——补全转述、补做工作。",
+    prompt: "请按 C. S. Lewis《诗篇撷思》“自问是否公平地与人争论”的思路，帮我自省这次争执。只分析我自己可核对的行为：我的转述是否完整？我答应的事做到没有？有没有用委屈或敏感替自己开脱？不要给对方贴标签或猜测动机。最后给我一个具体可做的纠正。\n\n争执经过：[填写]\n我说过 / 做过的事：[填写]\n我答应过但没做到的：[填写，没有就写“无”]"
+  },
+  {
+    id: "anger", q: "咒诅诗读起来很凶，难道神赞同报复？", title: "面对咒诅与义愤而不美化报复",
+    quote: "絕不可因咒詛出現在聖經中，便以為其中所流露的仇恨心態是神所稱許的。", where: "第23页",
+    points: ["先承认诗里确实有仇恨，不必替它粉饰。", "理解受害者为什么愤怒，不等于赞同报复。", "收进圣经不等于许可现实中伤人；也不该逼受伤的人立刻和好。"],
+    example: "诗句诅咒仇敌的儿女，不能推出“我可以伤害欺负我的人的孩子”。",
+    prompt: "请按 C. S. Lewis《诗篇撷思》读咒诅诗的思路，帮我理解下面这段：①诗中有哪些仇恨或报复的内容（请直说）②说话者可能处在怎样的受害处境 ③这些情绪在伦理上该怎么看 ④如果要用在自己身上，可以怎样私下省察。请不要美化报复，也不要要求受伤的人立刻原谅或回到伤害关系。\n\n译本：[填写]\n诗句：[粘贴诗段]\n我的感受或疑问：[填写]"
+  },
+  {
+    id: "means", q: "我们是不是把手段当成了目的？", title: "检查手段是否取代目的",
+    quote: "當途徑喧賓奪主，取目的而代之時，便成為一種禍害。", where: "第50页，Lewis 引用 Charles Williams 的话",
+    points: ["写下原本的目的，和现在用的方法。", "找证据：方法有没有把目的挤掉？", "不必丢掉方法，只要把它放回原来的位置。"],
+    example: "读经小组为排版字体争了一晚，取消了经文讨论——限定排版时间，恢复讨论。",
+    prompt: "请按 C. S. Lewis《诗篇撷思》中“途径喧宾夺主、取代目的”的思路，帮我检查下面这件事，分四栏：目的 / 手段 / 手段挤掉目的的具体证据 / 调整建议。没有证据的地方不要硬下结论，也不要否定手段本身。\n\n原定目的：[填写]\n现在的做法：[填写]\n已经出现的冲突或代价：[填写]"
+  },
+  {
+    id: "law", q: "律法明明是规矩，怎么会“比蜜甘甜”？", title: "理解律法为何“比蜜甘甜”",
+    quote: "因為人太容易誤以為精通神學便是不折不扣的好基督徒", where: "第49页",
+    points: ["甘甜可以来自研读可靠的准则，以及欣赏秩序与道德之美。", "这不等于规矩越多越好。", "懂得多、守得多，不保证品格更高。"],
+    example: "诗人说爱慕律法，却没声称自己已完全做到——那是愿望，不是成绩单。",
+    prompt: "请按 C. S. Lewis《诗篇撷思》的思路，帮我理解诗人为什么觉得律法“比蜜甘甜”。请区分：研读的喜乐、欣赏秩序之美、愿意实践，以及律法主义或自义。不要把古代律法直接当成现代生活规条。\n\n诗句（如有）：[粘贴]\n我的困惑：[填写]"
+  },
+  {
+    id: "social", q: "饭桌上有人讲别人隐私，我不想附和", title: "在社交中避免附和与自义",
+    quote: "有時不妨將自己的異見表達出來；只要道理解說清楚，避免強詞奪理", where: "第61页",
+    points: ["可选的不只“陪笑”或“翻脸”：还有安静、简短说明、拒绝、离开。", "说一句具体的话，不需要上道德课。", "按对方具体言行判断，不按身份标签判人。"],
+    example: "“这是他的私事，我们换个话题吧。”如果持续被逼，可以不参与或先离开。",
+    prompt: "请按 C. S. Lewis《诗篇撷思》中“不附和，也不道貌岸然”的思路，帮我想想下面这个场合怎么回应。请给出几种选择（保持安静 / 简短说明 / 拒绝 / 离开），说明各自适合的条件，再给一两句我可以直接说的话。不要按宗教、阶层或传言判断谁是坏人。\n\n场合与人：[填写]\n对方说了 / 做了什么：[填写]\n我在意的是：[例如不想伤和气、不想说人隐私]"
+  },
+  {
+    id: "praise", q: "为什么要赞美？会不会只是奉承？", title: "把赞美作为真实欣赏的表达",
+    quote: "讚美不只把賞悅之情表達出來，更且使欣賞的行為得以臻入高潮。", where: "第80页",
+    points: ["赞美是欣赏自然溢出来的话，说出来，欣赏才算完整。", "说出具体打动你的细节，比“你真厉害”更真。", "不为换好处去夸；没有真实欣赏，就不必编。"],
+    example: "“你用迷路后回到石板路的比喻，让那个概念一下就清楚了。”",
+    prompt: "请按 C. S. Lewis《诗篇撷思》对赞美的理解，帮我把下面的欣赏说出来：要具体、真实、不夸大、不带交换目的。给我两三个说法，长短各一。\n\n我欣赏的对象：[人 / 作品 / 事物]\n真正打动我的细节：[填写]\n我会在什么场合说：[填写]"
+  },
+  {
+    id: "layers", q: "这句旧约真的在讲基督吗？", title: "区分原义、第二义与个人联想",
+    quote: "而是將他的原義朝一相同的義理方向加以引申。", where: "第86页",
+    points: ["分四栏：原来的语境与原义、后来的传统读法、Lewis 怎么看、我自己的联想。", "第二义可以讨论，但不抹去第一义。", "“很像”不等于“预言”；证据不够就写“无法判定”。"],
+    example: "婚礼诗第一义仍是婚礼；“基督与教会”的读法要说明出自哪个传统。",
+    prompt: "请按 C. S. Lewis《诗篇撷思》讨论“第二义”的思路，把下面这段经文的理解分成四栏：①原来的语境与原义 ②后来的传统或神学读法（请注明出处）③Lewis 可能怎么看 ④我个人的联想。不要因为相似就断定是预言，证据不够请写“无法判定”。\n\n经文与译本：[填写]\n我听到的解释及出处：[填写]\n我自己的联想：[填写]"
+  }
+];
+
+const grid = document.getElementById("grid");
+const panels = document.getElementById("panels");
+
+function esc(s) { return s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+async function copyText(text, msgEl) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (e) {
+    const ta = document.createElement("textarea");
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); } catch (_) {}
+    ta.remove();
+  }
+  msgEl.textContent = "已复制，去粘贴给 AI 吧";
+  setTimeout(() => { msgEl.textContent = ""; }, 2600);
+}
+
+TOPICS.forEach(t => {
+  const b = document.createElement("button");
+  b.className = "topic"; b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", "p-" + t.id);
+  b.innerHTML = `<span class="q">${esc(t.q)}</span><span class="t">${esc(t.title)}</span>`;
+  grid.appendChild(b);
+
+  const p = document.createElement("section");
+  p.className = "panel"; p.id = "p-" + t.id; p.hidden = true;
+  p.innerHTML = `
+    <h3>${esc(t.q)}</h3>
+    <p class="sub">${esc(t.title)}</p>
+    <blockquote>${esc(t.quote)}<cite>——《诗篇撷思》曾珍珍译本 ${esc(t.where)}</cite></blockquote>
+    <h4>可以这样想</h4>
+    <ul>${t.points.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+    <h4>小例子（编者演练）</h4>
+    <p class="example">${esc(t.example)}</p>
+    <div class="prompt-box">
+      <h4>复制给 AI 的提问</h4>
+      <textarea aria-label="提问内容，可直接编辑">${esc(t.prompt + "\n\n" + RULES)}</textarea>
+      <div class="row">
+        <button class="btn">复制提问</button>
+        <span class="hint">先把 [方括号] 换成你的情况，在框里直接改就行</span>
+        <span class="copied" aria-live="polite"></span>
+      </div>
+    </div>`;
+  panels.appendChild(p);
+
+  const ta = p.querySelector("textarea");
+  const msg = p.querySelector(".copied");
+  p.querySelector(".btn").addEventListener("click", () => copyText(ta.value, msg));
+
+  b.addEventListener("click", () => {
+    const open = b.getAttribute("aria-expanded") === "true";
+    grid.querySelectorAll(".topic").forEach(x => x.setAttribute("aria-expanded", "false"));
+    panels.querySelectorAll(".panel").forEach(x => { x.hidden = true; });
+    if (!open) {
+      b.setAttribute("aria-expanded", "true"); p.hidden = false;
+      p.scrollIntoView({ behavior: "smooth", block: "start" });
+      try { history.replaceState(null, "", "#" + t.id); } catch (_) {}
+    }
+  });
+});
+
+const hash = location.hash.slice(1);
+if (hash) {
+  const idx = TOPICS.findIndex(t => t.id === hash);
+  if (idx >= 0) grid.children[idx].click();
+}
+
+const freeInput = document.getElementById("freeInput");
+document.getElementById("freeCopy").addEventListener("click", () => {
+  const q = freeInput.value.trim() || "[在这里写你的问题]";
+  const text = "请参考 C. S. Lewis《诗篇撷思》的思路回答我。\n\n我的问题：" + q + "\n\n" + RULES;
+  copyText(text, document.getElementById("freeMsg"));
+});
+</script>
+</body>
+</html>
