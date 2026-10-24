@@ -2,6 +2,10 @@
 
 > C.S. Lewis《Reflections on the Psalms》(诗篇撷思) 的 cangjie-skill 蒸馏工作区
 
+## 不想装 Skill？直接打开网页
+
+👉 **https://helenchen0703-blip.github.io/reflections-on-the-psalms/** — 十个常见困惑，点一个、复制提问、粘贴到任何 AI 即可。
+
 ## v1.0.0 成品（2026-10-24）
 
 | 内容 | 说明 |
